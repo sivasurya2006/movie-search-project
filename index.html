@@ -1,1 +1,108 @@
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="top-bar">
+        <div>
+          <p class="eyebrow">OMDb Movie Finder</p>
+          <h1>Movie Search App</h1>
+        </div>
+        <div class="key-box">
+          <label for="apiKeyInput">OMDb API Key</label>
+          <div class="key-row">
+            <input id="apiKeyInput" type="password" placeholder="Paste key" autocomplete="off" />
+            <button id="saveKeyButton" type="button">Save</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-panel" aria-label="Movie search">
+        <form id="searchForm" class="search-form">
+          <label class="sr-only" for="movieInput">Movie title</label>
+          <input
+            id="movieInput"
+            type="search"
+            placeholder="Search movies, e.g. Inception"
+            autocomplete="off"
+          />
+
+          <label class="sr-only" for="yearInput">Year</label>
+          <input id="yearInput" type="number" placeholder="Year" min="1900" max="2099" />
+
+          <label class="sr-only" for="typeSelect">Type</label>
+          <select id="typeSelect">
+            <option value="">All types</option>
+            <option value="movie">Movies</option>
+            <option value="series">Series</option>
+            <option value="episode">Episodes</option>
+          </select>
+
+          <button type="submit">Search</button>
+        </form>
+      </section>
+
+      <section id="statusCard" class="status-card">
+        Add your OMDb API key, then search for a movie.
+      </section>
+
+      <section class="results-head hidden" id="resultsHead">
+        <h2 id="resultsTitle">Results</h2>
+        <p id="resultsCount"></p>
+      </section>
+
+      <section id="movieGrid" class="movie-grid" aria-live="polite"></section>
+    </main>
+
+    <div id="modalBackdrop" class="modal-backdrop hidden">
+      <article class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button id="closeModalButton" class="close-button" type="button" aria-label="Close details">
+          &times;
+        </button>
+        <div class="modal-layout">
+          <img id="modalPoster" class="modal-poster" alt="" />
+          <div class="modal-content">
+            <p id="modalMeta" class="modal-meta"></p>
+            <h2 id="modalTitle"></h2>
+            <p id="modalPlot" class="plot"></p>
+
+            <dl class="details-list">
+              <div>
+                <dt>IMDb Rating</dt>
+                <dd id="modalRating"></dd>
+              </div>
+              <div>
+                <dt>Runtime</dt>
+                <dd id="modalRuntime"></dd>
+              </div>
+              <div>
+                <dt>Genre</dt>
+                <dd id="modalGenre"></dd>
+              </div>
+              <div>
+                <dt>Director</dt>
+                <dd id="modalDirector"></dd>
+              </div>
+              <div>
+                <dt>Actors</dt>
+                <dd id="modalActors"></dd>
+              </div>
+              <div>
+                <dt>Box Office</dt>
+                <dd id="modalBoxOffice"></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
